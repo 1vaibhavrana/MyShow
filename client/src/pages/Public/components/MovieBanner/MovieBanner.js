@@ -14,6 +14,11 @@ import ArrowRightAlt from '@material-ui/icons/ArrowRightAlt';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import styles from './styles';
 
+const fixImagePath = (imagePath) => {
+  if (!imagePath) return '';
+  return imagePath.replace(/\\/g, '/');
+};
+
 const useStyles = makeStyles(styles);
 
 const StyledRating = withStyles({
@@ -85,7 +90,7 @@ function MovieBanner(props) {
       <div
         className={classes.blurBackground}
         style={{
-          backgroundImage:`url(${movie.image || images[movie.title]})`
+          backgroundImage:`url(${fixImagePath(movie.image) || images[movie.title]})`
         }}
       />
       <div className={classes.movieActions}>

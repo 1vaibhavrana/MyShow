@@ -38,7 +38,7 @@ router.post(
       console.log('check new', movie);
 
       if (!movie) return res.sendStatus(404);
-      movie.image = `${url}/${file.path}`;
+      movie.image = `${url}/${file.path.replace(/\\/g, '/')}`;
       await movie.save();
       console.log('image saved to movie:', movie.image); 
       res.send({ movie, file });
